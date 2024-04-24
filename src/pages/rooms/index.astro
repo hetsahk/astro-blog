@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const jsonData = {
+	name: "Amuillan",
+	rooms: [
+		{
+			name: "Habitacion1",
+		},
+		{
+			name: "Habitacion2",
+		},
+		{
+			name: "Habitacion3",
+		},
+		{
+			name: "Habitacion4",
+		},
+	],
+};
+
+const data = await Promise.resolve(jsonData);
+const rooms = data.rooms;
+
+const pageTitle = "Rooms";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+	<div class="tags">
+		{
+			rooms.map((room) => (
+				<p class="room">
+					<a href={`/rooms/${room.name}`}>{room.name}</a>
+				</p>
+			))
+		}
+	</div>
+</BaseLayout>

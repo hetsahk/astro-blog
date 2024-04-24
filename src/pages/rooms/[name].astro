@@ -1,0 +1,40 @@
+---
+// src/pages/rooms/[name].astro
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// Simulando datos JSON que podrías obtener de una API
+
+// Función que simula getStaticPaths usando datos locales
+export async function getStaticPaths() {
+	const jsonData = {
+		name: "Amuillan",
+		rooms: [
+			{
+				name: "Habitacion1",
+			},
+			{
+				name: "Habitacion2",
+			},
+			{
+				name: "Habitacion3",
+			},
+			{
+				name: "Habitacion4",
+			},
+		],
+	};
+
+	const data = await Promise.resolve(jsonData);
+	return data.rooms.map((room) => ({
+		params: { name: room.name },
+	}));
+}
+
+// Acceder al parámetro 'name' que definimos en getStaticPaths
+const { name } = Astro.params;
+---
+
+<BaseLayout>
+	<h1>{name}</h1>
+	<p>Bienvenido a la {name}</p>
+</BaseLayout>
