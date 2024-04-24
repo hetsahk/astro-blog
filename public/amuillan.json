@@ -1,0 +1,30 @@
+{
+	"name": "Amuillan",
+	"description": "8 habitaciones con vista al mar, 6 monoambientes sobre la playa con vista al mar y 4 aparts a 30 metros del mar con todos los servicios. Todos los detalles para que en sus días de descanso sienta la tranquilidad propia de un ambiente familiar y pleno de naturaleza. Además, un hermoso parque con piscina, hidromasaje y solarium. 18 unidades para 2 a 5 personas.",
+	"amenities": [
+		"Piscina climatizada",
+		"Pileta para niños",
+		"Solarium",
+		"Sombrillas y reposeras en el alojamiento",
+		"Cochera",
+		"Estacionamiento semicubierto",
+		"Wi-Fi",
+		"Conexión a internet",
+		"Toallas para la playa",
+		"Reposeras para la playa",
+		"Reposeras y sombrillas para la playa",
+		"Toallas para la piscina",
+		"Stock de películas",
+		"Agua caliente central"
+	],
+	"restrictions": ["No acepta mascotas"],
+	"services": [
+		"Bar",
+		"Desayuno buffet",
+		"Desayuno continental",
+		"Mucama",
+		"Ropa blanca",
+		"Aménities",
+		"Servicio de playa"
+	]
+}

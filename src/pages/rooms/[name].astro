@@ -3,38 +3,47 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 // Simulando datos JSON que podrías obtener de una API
-
 // Función que simula getStaticPaths usando datos locales
 export async function getStaticPaths() {
-	const jsonData = {
-		name: "Amuillan",
-		rooms: [
-			{
-				name: "Habitacion1",
+	const res = await fetch("https://api.spacexdata.com/v5/launches/query", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			query: {},
+			options: {
+				sort: {
+					date_unix: "asc",
+				},
+				limit: 5,
 			},
-			{
-				name: "Habitacion2",
-			},
-			{
-				name: "Habitacion3",
-			},
-			{
-				name: "Habitacion4",
-			},
-		],
-	};
+		}),
+	});
 
-	const data = await Promise.resolve(jsonData);
-	return data.rooms.map((room) => ({
-		params: { name: room.name },
+	const spaceData = await res.json();
+
+	console.log(spaceData.docs);
+
+	return spaceData.docs.map((launch) => ({
+		params: { name: launch.name },
+		props: {
+			launchDetail: launch.details,
+			launchSmallImage: launch.links.patch.small,
+		},
 	}));
 }
 
 // Acceder al parámetro 'name' que definimos en getStaticPaths
 const { name } = Astro.params;
+const { launchDetail, launchSmallImage } = Astro.props;
+
+const decodedName = decodeURIComponent(name);
 ---
 
 <BaseLayout>
-	<h1>{name}</h1>
-	<p>Bienvenido a la {name}</p>
+	<h1>{decodedName}</h1>
+	<p>Bienvenido al lanzamiento del {decodedName}</p>
+	<p>{launchDetail}</p>
+	<img src={launchSmallImage} alt="" />
 </BaseLayout>
