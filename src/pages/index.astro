@@ -1,13 +1,13 @@
 ---
-// CSS GLOBAL
-import "../styles/global.css";
-
-// COMPONENTS
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+import coverImage from "../assets/cover.jpeg";
 
 const pageTitle = "Página de inicio";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
 	<h2>Mi impresionante subtítulo del blog</h2>
+	<Image src={coverImage} alt="Cover image" />
 </BaseLayout>
